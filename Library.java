@@ -8,18 +8,27 @@ import java.util.Hashtable;
 public class Library extends Building implements LibraryRequirements{
 
   private Hashtable<String, Boolean> collection;
+  private boolean hasElevator;
+
     
   /**
    * Constructor for a library
    * @param name name of library
    * @param address address of library
-   * @param nFloors number of floors of librart
+   * @param nFloors number of floors of library
+   * @param hasElevator whether the house has an elevator room
    */
-    public Library(String name, String address, int nFloors) {
+    public Library(String name, String address, int nFloors, Boolean hasElevator) {
       super(name, address, nFloors);
       this.collection = new Hashtable<String, Boolean>();
+      this.hasElevator = hasElevator; 
+
 
       System.out.println("You have built a library: 📖");
+    }
+
+    public boolean hasElevator(){
+      return this.hasElevator;
     }
 
     /**
@@ -70,6 +79,8 @@ public class Library extends Building implements LibraryRequirements{
         throw new RuntimeException(title  + " not in library, cannot be checked out.");
       }
     }
+
+    
 
     /** 
      * Returns a book that's been checked out back to the library. Throws errors if the book is not in the library or is already checked out
@@ -138,10 +149,26 @@ public class Library extends Building implements LibraryRequirements{
       System.out.println(" + addTitle(String title) \n + removeTitle(String title) \n + checkOut(String title) \n + returnBook(String title) \n + containsTitle(String title) \n + isAvailable(String title) \n + printCollection()");
     }
 
+    public void goToFloor(int floorNum) {
+    if (this.hasElevator){
+      super.goToFloor(floorNum);
+    } else {
+      if (this.activeFloor == -1) {
+        throw new RuntimeException("You are not inside this Building. Must call enter() before navigating between floors.");
+      }
+      if (floorNum < 1 || floorNum > this.nFloors) {
+        throw new RuntimeException("Invalid floor number. Valid range for this Building is 1-" + this.nFloors +".");
+      }
+        System.out.println("You are now on floor #" + floorNum + " of " + this.name);
+        this.activeFloor = floorNum;
+    }
+
+    }
+
   
     public static void main(String[] args) {
 
-      Library Neilson = new Library("Neilson", "Smith Campus", 5);
+      Library Neilson = new Library("Neilson", "Smith Campus", 5, true);
       String book1 = "The Lorax by Dr. Seuss";
       Neilson.addTitle(book1);
       System.out.println(Neilson.isAvailable(book1));

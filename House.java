@@ -17,6 +17,7 @@ public class House extends Building implements HouseRequirements{
    * @param address Address of House
    * @param nFloors Number of floors of house
    * @param hasDiningRoom whether the house has a dining room
+   * @param hasElevator whether the house has an elevator room
    */
   public House(String name, String address, int nFloors, boolean hasDiningRoom, boolean hasElevator) {
     super(name, address, nFloors);
@@ -35,7 +36,7 @@ public class House extends Building implements HouseRequirements{
     return this.hasDiningRoom;
   } 
 
-  private boolean hasElevator(){
+  public boolean hasElevator(){
     return this.hasElevator;
   }
 
@@ -91,7 +92,7 @@ public class House extends Building implements HouseRequirements{
 
   public void showOptions(){
     super.showOptions();
-    System.out.println(" + hasDiningRoom() \n + nResidents() \n + moveIn(Student s) \n + moveOut(Student s) \n + isResident(Student s)");
+    System.out.println(" + hasDiningRoom() \n +hasElevator*() \n + nResidents() \n + moveIn(Student s) \n + moveOut(Student s) \n + isResident(Student s)");
   }
 
   public void goToFloor(int floorNum) {
@@ -123,6 +124,8 @@ public class House extends Building implements HouseRequirements{
 
     System.out.println(Lamont.hasDiningRoom());
     System.out.println(Lamont.residents);
+
+
 
     Student Iris = new Student("Iris", "999999992", 2028);
     Lamont.moveOut(Iris);
