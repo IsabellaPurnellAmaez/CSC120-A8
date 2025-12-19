@@ -76,11 +76,24 @@ public class Cafe extends Building implements CafeRequirements{
 
     }
 
+    /* navigation options */
     public void showOptions(){
         super.showOptions();
         System.out.println( " + sellCoffee(size, nSugarPackets, nCreams)");
     }
 
+    public void goToFloor(int floorNum) {
+        if (this.activeFloor == -1) {
+        throw new RuntimeException("You are not inside this Building. Must call enter() before navigating between floors.");
+      }
+        if (floorNum > 1 ) {
+        throw new RuntimeException("Customers cannog to above the first floor, please stay on the ground floor of the cafe.");
+      }
+        System.out.println("You are now on floor #" + floorNum + " of " + this.name);
+        this.activeFloor = floorNum;
+    }
+
+    
     public static void main(String[] args) {
         Cafe Iconica = new Cafe("Iconica", "Main St", 2);
         Iconica.sellCoffee(12, 2, 3);

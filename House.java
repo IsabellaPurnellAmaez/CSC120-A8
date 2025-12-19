@@ -35,7 +35,10 @@ public class House extends Building implements HouseRequirements{
   public boolean hasDiningRoom(){
     return this.hasDiningRoom;
   } 
-
+  /**
+   * Says whether the house has an elevator
+   * @return T/F: yes or no elevator
+   */
   public boolean hasElevator(){
     return this.hasElevator;
   }
@@ -89,6 +92,8 @@ public class House extends Building implements HouseRequirements{
       return false;
     }
   } 
+  
+  /* Navigation methods */
 
   public void showOptions(){
     super.showOptions();

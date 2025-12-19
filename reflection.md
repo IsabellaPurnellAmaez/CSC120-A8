@@ -6,4 +6,4 @@ go to floor in cafes because in campus cafes like compass and the cc you can lea
 
 - What worked, what didn't, what advice would you give someone taking this course in the future?
 
-
+Don't save things to the last minute, start early so there's time to get help and ask questions. 

@@ -26,7 +26,10 @@ public class Library extends Building implements LibraryRequirements{
 
       System.out.println("You have built a library: 📖");
     }
-
+    /**
+    * Says whether the house has an elevator
+    * @return T/F: yes or no elevator
+    */
     public boolean hasElevator(){
       return this.hasElevator;
     }
